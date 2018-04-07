@@ -6,6 +6,10 @@ restart.addEventListener('click', function() {
   shuffle(list);
 });
 
+ // Create a list that holds all of your cards
+ let list = document.getElementsByClassName("card");
+ console.log(list);
+
 //Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
 function ready() {
   let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
@@ -22,11 +26,15 @@ function ready() {
     }, 3000);
   }
 }
-/*
- * Create a list that holds all of your cards
- */
- let list = document.getElementsByClassName("card");
- console.log(list);
+
+//Flips the Cards when they are clicked on
+for (let cards = 0; cards < list.length; cards++){
+  list[cards].addEventListener('click', function(event){
+    console.log("Flipping Card");
+    event.target.classList.add("show", "open");
+  });
+}
+
 
 
 /*
