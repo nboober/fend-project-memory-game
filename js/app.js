@@ -1,3 +1,9 @@
+let restart = document.querySelector(".restart");
+restart.addEventListener('click', function() {
+  window.location.reload();
+  console.log("Page refreshed");
+});
+
 /*
  * Create a list that holds all of your cards
  */
