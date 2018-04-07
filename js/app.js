@@ -1,3 +1,4 @@
+//Event listener for reload button
 let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
   window.location.reload();
@@ -5,16 +6,18 @@ restart.addEventListener('click', function() {
   shuffle(list);
 });
 
+//Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
 function ready() {
   let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
   if (confirmation === true){
-    //Adds Class to show all the cards
+    //Adds Class to show all the cards.
     for(let l = 0; l < list.length; l++){
-      list[l].classList.add("show");
+      list[l].classList.add("show", "open");
     }
+    //Removes Class that shows all Cards after 3 seconds.
   setTimeout( function hideCards() {
     for(let l = list.length-1; l >= 0; l--){
-    list[l].classList.remove("show");
+    list[l].classList.remove("show", "open");
       }
     }, 3000);
   }
