@@ -3,7 +3,9 @@ let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
   window.location.reload();
   console.log("Page refreshed");
-  shuffle(list);
+//The Array List is automatically shuffled when the page is refreshed
+  list = shuffle(list);
+  console.log(list);
 });
 
  // Create a list that holds all of your cards
@@ -58,6 +60,7 @@ function shuffle(array) {
 
     return array;
 }
+
 
 
 /*
