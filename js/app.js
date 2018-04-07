@@ -2,11 +2,28 @@ let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
   window.location.reload();
   console.log("Page refreshed");
+  shuffle(list);
 });
 
+function ready() {
+  let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
+  if (confirmation === true){
+    //Adds Class to show all the cards
+    for(let l = 0; l < list.length; l++){
+      list[l].classList.add("show");
+    }
+  setTimeout( function hideCards() {
+    for(let l = list.length-1; l >= 0; l--){
+    list[l].classList.remove("show");
+      }
+    }, 3000);
+  }
+}
 /*
  * Create a list that holds all of your cards
  */
+ let list = document.getElementsByClassName("card");
+ console.log(list);
 
 
 /*
