@@ -7,10 +7,8 @@ let child = document.getElementsByClassName("list");
 console.log(child);
 
 //Push the HTMLCollection from child into array childName
-let childName = [];
-for (let i = 0; i < child.length; i++){
-  childName.push(child[i]);
-}
+let childName = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
+
 console.log(childName);
 
 //Event listener for reload button
