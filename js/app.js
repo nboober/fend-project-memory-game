@@ -1,3 +1,10 @@
+// Create a list that holds all of your cards
+let list = document.getElementsByClassName("card");
+console.log(list);
+
+let child = document.getElementsByClassName("list");
+console.log(child);
+
 //Event listener for reload button
 let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
@@ -8,11 +15,7 @@ restart.addEventListener('click', function() {
   console.log(list);
 });
 
- // Create a list that holds all of your cards
- let list = document.getElementsByClassName("card");
- console.log(list);
-
-//Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
+// Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
 function ready() {
   let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
   if (confirmation === true){
@@ -34,6 +37,7 @@ for (let cards = 0; cards < list.length; cards++){
   list[cards].addEventListener('click', function(event){
     console.log("Flipping Card");
     event.target.classList.add("show", "open");
+
   });
 }
 
