@@ -38,6 +38,11 @@ for (let cards = 0; cards < list.length; cards++){
     console.log("Flipping Card");
     event.target.classList.add("show", "open");
 
+
+
+
+
+
   });
 }
 
