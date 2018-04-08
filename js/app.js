@@ -1,18 +1,24 @@
-// Create a list that holds all of your cards
+// Card List
 let list = document.getElementsByClassName("card");
 console.log(list);
 
+//List of Child Card Classes
 let child = document.getElementsByClassName("list");
 console.log(child);
+
+//Push the HTMLCollection from child into array childName
+let childName = [];
+for (let i = 0; i < child.length; i++){
+  childName.push(child[i]);
+}
+console.log(childName);
 
 //Event listener for reload button
 let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
   window.location.reload();
   console.log("Page refreshed");
-//The Array List is automatically shuffled when the page is refreshed
-  list = shuffle(list);
-  console.log(list);
+  // newClasses();
 });
 
 // Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
@@ -32,17 +38,29 @@ function ready() {
   }
 }
 
+//Function to remove old classes and add new class names to children
+  //Remove old Classes
+function newClasses() {
+  for (let old = 0; old < child.length; old++){
+    child[old].classList.remove(child[old]);
+  }
+  //Calls the Shuffle Function to Shuffle the childName Array
+  childName = shuffle(childName);
+  console.log(childName);
+  //Adds classes from childName to child
+  for(let blank = 0; blank < child.length; blank++){
+    for(let n = 0; n < childName.length; n++){
+      child[blank].classList.add(childName[n]);
+    }
+  }
+}
+newClasses();
+
 //Flips the Cards when they are clicked on
 for (let cards = 0; cards < list.length; cards++){
   list[cards].addEventListener('click', function(event){
     console.log("Flipping Card");
     event.target.classList.add("show", "open");
-
-
-
-
-
-
   });
 }
 
