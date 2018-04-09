@@ -2,14 +2,39 @@
 let list = document.getElementsByClassName("card");
 console.log(list);
 
-//List of Child Card Classes
 let child = document.getElementsByClassName("list");
 console.log(child);
 
 //Push the HTMLCollection from child into array childName
 let childName = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
-
 console.log(childName);
+
+let shuffled = shuffle(childName);
+console.log(shuffled);
+
+//Appending new classes to i elements
+shuffled.forEach(function(i){
+
+  for (let c = 0; c < child.length; c++){
+    let classes = child[c].classList;
+    console.log(classes);
+
+    for (let cn = 0; cn < childName.length; cn++){
+
+      if (child[c].classList.contains(childName[cn])){
+        child[c].classList.remove(childName[cn]);
+        console.log("The matched class was " + childName[cn]);
+
+        child[c].classList.add(i);
+        console.log("The cards new class is " + i);
+
+      }
+    }
+  }
+
+});
+
+
 
 //Event listener for reload button
 let restart = document.querySelector(".restart");
@@ -35,24 +60,6 @@ function ready() {
     }, 3000);
   }
 }
-
-//Function to remove old classes and add new class names to children
-  //Remove old Classes
-function newClasses() {
-  for (let old = 0; old < child.length; old++){
-    child[old].classList.remove(child[old]);
-  }
-  //Calls the Shuffle Function to Shuffle the childName Array
-  childName = shuffle(childName);
-  console.log(childName);
-  //Adds classes from childName to child
-  for(let blank = 0; blank < child.length; blank++){
-    for(let n = 0; n < childName.length; n++){
-      child[blank].classList.add(childName[n]);
-    }
-  }
-}
-newClasses();
 
 //Flips the Cards when they are clicked on
 for (let cards = 0; cards < list.length; cards++){
