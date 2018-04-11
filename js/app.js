@@ -1,40 +1,24 @@
 // Card List
-let list = document.getElementsByClassName("card");
+let list = document.querySelectorAll("li.card");
 console.log(list);
 
-let child = document.getElementsByClassName("list");
-console.log(child);
+let deck = document.querySelector("ul.deck");
 
-//Push the HTMLCollection from child into array childName
-let childName = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
-console.log(childName);
-
-let shuffled = shuffle(childName);
-console.log(shuffled);
-
-//Appending new classes to i elements
-shuffled.forEach(function(i){
-
-  for (let c = 0; c < child.length; c++){
-    let classes = child[c].classList;
-    console.log(classes);
-
-    for (let cn = 0; cn < childName.length; cn++){
-
-      if (child[c].classList.contains(childName[cn])){
-        child[c].classList.remove(childName[cn]);
-        console.log("The matched class was " + childName[cn]);
-
-        child[c].classList.add(i);
-        console.log("The cards new class is " + i);
-
-      }
-    }
-  }
-
-});
-
-
+//function to shuffle cards
+  //Turns the list variable of cards into an array and removes the list from the html file
+let array = [];
+for (let l = 0; l < list.length; l++){
+  array.push(list[l]);
+  list[l].remove();
+}
+console.log(array);
+  //Shuffles the array of cards using the shuffle function
+let shuffled = shuffle(array);
+  //Sorts through the newly shuffled cards and appends them to the deck element in the html file
+for (let s = 0; s < shuffled.length; s++){
+  console.log(shuffled[s]);
+  deck.appendChild(shuffled[s]);
+}
 
 //Event listener for reload button
 let restart = document.querySelector(".restart");
