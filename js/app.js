@@ -40,7 +40,6 @@ let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
   window.location.reload();
   console.log("Page refreshed");
-  // newClasses();
 });
 
 // Page Load Prompt. Starts the game by giving the player 3 seconds to memorize the cards before they flip over again.
@@ -79,7 +78,7 @@ let secondSelectedClass;
     //This setTimeout delays the matching function for one second so the cards can flip completely
     setTimeout(function afterCardFlip(){
         matchingCards();
-      }, 2500);
+      }, 2000);
       }
     });
 
@@ -109,6 +108,7 @@ function pushToMatchedList(){
   for (let s = 0; s < selectedCards.length; s++){
   matchedCards.push(selectedCards[s])
     }
+  cycleMatched();
 }
 
 //Adds match classes to cards in the matchedCards array
@@ -134,25 +134,24 @@ console.log("The number of cards selected are " + selectedCards.length);
 
 //Matching the 2 child classes from the cards selected
   function matchingCards() {
-    if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run a nested loop of the class lists from the previous area
+    if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2
     first = selectedCardPicture[0].classList;
     console.log("Class of first card " + first[1]);
     firstSelectedClass = first[1];
     second = selectedCardPicture[1].classList;
     console.log("Class of Second Card " + second[1]);
     secondSelectedClass = second[1];
-        if(firstSelectedClass === secondSelectedClass){ //If a class from the first card selected matches a class from the second card selected alert matched, else alert no match
+        if(firstSelectedClass === secondSelectedClass){ //If  the child class from the first card selected matches the child class from the second card selected the cards match, else they don't match
           //alert("Matched!!");
           console.log("Match");
-          pushToMatchedList();
-          cycleMatched();
+          pushToMatchedList(); //If the cards match push them to the matchedCards array
           selectedCards = [];
           selectedCardPicture = [];
           first;
           second;
           console.log(matchedCards);
-          //Whenever 2 cards match the win function is run to check if you beat the game
-          win();
+          win(); //Whenever 2 cards match the win function is run to check if you beat the game
+
         } else {
           //alert("No Match");
           console.log("No Match");
@@ -164,7 +163,7 @@ console.log("The number of cards selected are " + selectedCards.length);
           }
 
     }else if(selectedCards.length > 2){
-    alert("Over 3 cards selected");
+    alert("Error! Over 3 cards selected. Restart the game.");
       }
     }
 //Win function
