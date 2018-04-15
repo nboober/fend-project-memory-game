@@ -20,6 +20,21 @@ for (let s = 0; s < shuffled.length; s++){
   deck.appendChild(shuffled[s]);
 }
 
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
 //Event listener for reload button
 let restart = document.querySelector(".restart");
 restart.addEventListener('click', function() {
@@ -45,40 +60,119 @@ function ready() {
   }
 }
 
-//Flips the Cards when they are clicked on
-for (let cards = 0; cards < list.length; cards++){
-  list[cards].addEventListener('click', function(event){
-    console.log("Flipping Card");
-    event.target.classList.add("show", "open");
-  });
+//Global Variables
+let scoreValue = 0;
+let selectedCards = [];
+let selectedCardPicture = [];
+let matchedCards = [];
+let first;
+let second;
+let firstSelectedClass;
+let secondSelectedClass;
+
+//The Game
+  document.addEventListener('click', function(event){
+    if(event.target.nodeName === 'LI'){
+      flipCards();
+      incrementCounter();
+      selectedCard();
+    //This setTimeout delays the matching function for one second so the cards can flip completely
+    setTimeout(function afterCardFlip(){
+        matchingCards();
+      }, 2000);
+      }
+    });
+
+
+//Flips the chosen card
+function flipCards(){
+selectedCards.push(event.target);
+console.log("Flipping Card");
+cycleOpen();
 }
 
+//Adds card show classes
+function cycleOpen(){
+for (let s = 0; s < selectedCards.length; s++){
+selectedCards[s].classList.add("show", "open");
+  }
+}
 
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+//Removes card show classes
+function cycleClosed() {
+  for (let s = 0; s < selectedCards.length; s++){
+  selectedCards[s].classList.remove("show", "open");
     }
-
-    return array;
+}
+//Function to Push matched cards to the Matched array
+function pushToMatchedList(){
+  for (let s = 0; s < selectedCards.length; s++){
+  matchedCards.push(selectedCards[s])
+    }
 }
 
+//Adds match classes to cards in the matchedCards array
+function cycleMatched(){
+for (let m = 0; m < matchedCards.length; m++){
+  matchedCards[m].classList.add("show", "open", "match");
+  }
+}
+  //Increments the move counter for every card flipped
+function incrementCounter() {
+scoreValue++;
+document.querySelector(".moves").innerHTML = scoreValue;
+console.log(scoreValue + " moves have been made.");
+}
 
+  //Gets the child class from the cards selected
+function selectedCard(){
+selectedCardPicture.push(event.target.childNodes[1]);
+  console.log(selectedCardPicture);
+console.log(selectedCards.length);
+console.log("The number of cards selected are " + selectedCards.length);
+}
 
+//Matching the 2 child classes from the cards selected
+  function matchingCards() {
+    if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run a nested loop of the class lists from the previous area
+    first = selectedCardPicture[0].classList;
+    console.log("Class of first card " + first[1]);
+    firstSelectedClass = first[1];
+    second = selectedCardPicture[1].classList;
+    console.log("Class of Second Card " + second[1]);
+    secondSelectedClass = second[1];
+        if(firstSelectedClass === secondSelectedClass){ //If a class from the first card selected matches a class from the second card selected alert matched, else alert no match
+          //alert("Matched!!");
+          console.log("Match");
+          pushToMatchedList();
+          cycleMatched();
+          selectedCards = [];
+          selectedCardPicture = [];
+          first;
+          second;
+          console.log(matchedCards);
+          //Whenever 2 cards match the win function is run to check if you beat the game
+          win();
+        } else {
+          //alert("No Match");
+          console.log("No Match");
+          cycleClosed();
+          selectedCards = [];
+          selectedCardPicture = [];
+          first;
+          second;
+          }
+
+    }else if(selectedCards.length > 2){
+    alert("Over 3 cards selected");
+      }
+    }
+//Win function
+function win(){
+  if (matchedCards.length === 16){
+    alert("You win!! \n You beat the game in " + scoreValue + " moves.");
+    }
+  }
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
