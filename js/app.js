@@ -1,3 +1,17 @@
+//Global Variables
+let startTimer;
+let endTimer;
+let finalTime;
+let time;
+let scoreValue = 0;
+let selectedCards = [];
+let selectedCardPicture = [];
+let matchedCards = [];
+let first;
+let second;
+let firstSelectedClass;
+let secondSelectedClass;
+
 // Card List
 let list = document.querySelectorAll("li.card");
 console.log(list);
@@ -46,6 +60,8 @@ restart.addEventListener('click', function() {
 function ready() {
   let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
   if (confirmation === true){
+    startTimer = Date.now(); // Starts Timer once confirmation is made to start the game
+    console.log(startTimer);
     //Adds Class to show all the cards.
     for(let l = 0; l < list.length; l++){
       list[l].classList.add("show", "open");
@@ -58,16 +74,6 @@ function ready() {
     }, 3000);
   }
 }
-
-//Global Variables
-let scoreValue = 0;
-let selectedCards = [];
-let selectedCardPicture = [];
-let matchedCards = [];
-let first;
-let second;
-let firstSelectedClass;
-let secondSelectedClass;
 
 //The Game
   document.addEventListener('click', function(event){
@@ -148,7 +154,9 @@ console.log("The number of cards selected are " + selectedCards.length);
           first;
           second;
           console.log(matchedCards);
-          win(); //Whenever 2 cards match the win function is run to check if you beat the game
+          setTimeout(function() {
+            win(); //Whenever 2 cards match the win function is run to check if you beat the game
+          }, 1000);
 
         } else {
           //alert("No Match");
@@ -159,7 +167,7 @@ console.log("The number of cards selected are " + selectedCards.length);
             selectedCardPicture = [];
             first;
             second;
-          }, 2000);
+          }, 1000);
 
           }
 
@@ -171,6 +179,15 @@ console.log("The number of cards selected are " + selectedCards.length);
 //Win function
 function win(){
   if (matchedCards.length === 16){
-    alert("You win!! \n You beat the game in " + scoreValue + " moves.");
+    endTimer = Date.now();//Stop timer once game is won
+    finalTime = endTimer - startTimer;
+    time = Math.floor(finalTime/1000);//Time converted into seconds
+    console.log(endTimer);
+    console.log(finalTime);
+    console.log(time);
+    var conf = confirm("You won!! \n You beat the game in " + scoreValue + " moves and in " + time + " seconds. \n \n Would you like to play again?");
+    if (conf === true){
+      location.reload();
+    }
     }
   }
