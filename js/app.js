@@ -72,13 +72,7 @@ let secondSelectedClass;
 //The Game
   document.addEventListener('click', function(event){
     if(event.target.nodeName === 'LI'){
-      flipCards();
-      incrementCounter();
-      selectedCard();
-    //This setTimeout delays the matching function for one second so the cards can flip completely
-    setTimeout(function afterCardFlip(){
         matchingCards();
-      }, 2000);
       }
     });
 
@@ -134,6 +128,10 @@ console.log("The number of cards selected are " + selectedCards.length);
 
 //Matching the 2 child classes from the cards selected
   function matchingCards() {
+  if(selectedCardPicture.length < 2){
+    flipCards();
+    incrementCounter();
+    selectedCard();
     if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2
     first = selectedCardPicture[0].classList;
     console.log("Class of first card " + first[1]);
@@ -155,17 +153,21 @@ console.log("The number of cards selected are " + selectedCards.length);
         } else {
           //alert("No Match");
           console.log("No Match");
-          cycleClosed();
-          selectedCards = [];
-          selectedCardPicture = [];
-          first;
-          second;
+          setTimeout(function(){
+            cycleClosed();
+            selectedCards = [];
+            selectedCardPicture = [];
+            first;
+            second;
+          }, 2000);
+
           }
 
     }else if(selectedCards.length > 2){
     alert("Error! Over 3 cards selected. Restart the game.");
       }
     }
+  }
 //Win function
 function win(){
   if (matchedCards.length === 16){
