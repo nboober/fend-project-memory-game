@@ -128,11 +128,11 @@ console.log("The number of cards selected are " + selectedCards.length);
 
 //Matching the 2 child classes from the cards selected
   function matchingCards() {
-  if(selectedCardPicture.length < 2){
+  if(selectedCardPicture.length < 2){//When there are less then two cards selected, run the functions that allow the flipping of cards
     flipCards();
     incrementCounter();
     selectedCard();
-    if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2
+    if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run the functionality to assess whether the cards match or not
     first = selectedCardPicture[0].classList;
     console.log("Class of first card " + first[1]);
     firstSelectedClass = first[1];
@@ -153,7 +153,7 @@ console.log("The number of cards selected are " + selectedCards.length);
         } else {
           //alert("No Match");
           console.log("No Match");
-          setTimeout(function(){
+          setTimeout(function(){//setTimeout created to allow the cards to completely flip before they are flipped back over
             cycleClosed();
             selectedCards = [];
             selectedCardPicture = [];
