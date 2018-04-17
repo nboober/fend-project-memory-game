@@ -82,6 +82,26 @@ function ready() {
       }
     });
 
+    //Increments the move counter for every card flipped
+    function incrementCounter() {
+    scoreValue++;
+    document.querySelector(".moves").innerHTML = scoreValue;
+    console.log(scoreValue + " moves have been made.");
+    }
+
+    //Hearts
+      //Decrements the heart counter at certain intervals of the game
+    let heartsContainer = document.querySelector(".stars").children;
+    console.log(heartsContainer);
+    function heartDecrement(){
+      if(scoreValue === 18){
+      heartsContainer[0].remove();
+    } else if(scoreValue === 26){
+        heartsContainer[0].remove();
+      } else if(scoreValue === 34){
+          heartsContainer[0].remove();
+      }
+    }
 
 //Flips the chosen card
 function flipCards(){
@@ -117,12 +137,6 @@ for (let m = 0; m < matchedCards.length; m++){
   matchedCards[m].classList.add("show", "open", "match");
   }
 }
-  //Increments the move counter for every card flipped
-function incrementCounter() {
-scoreValue++;
-document.querySelector(".moves").innerHTML = scoreValue;
-console.log(scoreValue + " moves have been made.");
-}
 
   //Gets the child class from the cards selected
 function selectedCard(){
@@ -137,6 +151,7 @@ console.log("The number of cards selected are " + selectedCards.length);
   if(selectedCardPicture.length < 2){//When there are less then two cards selected, run the functions that allow the flipping of cards
     flipCards();
     incrementCounter();
+    heartDecrement();
     selectedCard();
     if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run the functionality to assess whether the cards match or not
     first = selectedCardPicture[0].classList;
@@ -185,7 +200,7 @@ function win(){
     console.log(endTimer);
     console.log(finalTime);
     console.log(time);
-    var conf = confirm("You won!! \n You beat the game in " + scoreValue + " moves and in " + time + " seconds. \n \n Would you like to play again?");
+    var conf = confirm("You won!! \nYou beat the game in " + scoreValue + " moves and in " + time + " seconds. \nYou beat the game with " + heartsContainer.length + " hearts remaining. \n \nWould you like to play again and try to beat your score?");
     if (conf === true){
       location.reload();
     }
