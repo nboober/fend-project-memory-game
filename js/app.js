@@ -72,18 +72,20 @@ function ready() {
     list[l].classList.remove("show", "open");
       }
     }, 3000);
+    game();
   }
 }
 
 //The Game
+function game(){
 setTimeout(function() {
   document.addEventListener('click', function(event){
     if(event.target.nodeName === 'LI'){
         matchingCards();
       }
     });
-}, 3500);
-
+  }, 3500);
+}
 
     //Increments the move counter for every card flipped
     function incrementCounter() {
