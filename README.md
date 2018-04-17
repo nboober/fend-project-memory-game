@@ -2,19 +2,24 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Summary](#Summary)
 * [Contributing](#contributing)
 
-## Instructions
+## Summary
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This project is a shape matching game. When the player is ready he has 3 seconds to memorize the cards on the board before they are flipped over.
+The player flips over two cards at a time. If the cards match then they stay facing up. If they don't match they are flipped face down again.
+The game is scored in 3 different ways:
+  - A Timer
+  - A Move counter
+  - A Heart counter
 
-To get started, open `js/app.js` and start building out the app's functionality
+The timer starts as soon as the player starts the game and ends when the player beats the game.
+The Move Counter increments for every card that is flipped.
+The Heart Counter decrements after a certain number of cards are flipped. The most hearts a player can get is 3 hearts (Less than 18 cards flipped). The least a player can get is zero (Over 33 cards Flipped).
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The game is won once the player matches all 16 cards on the board. The player is given the final scores based on the criteria above and an option to try and beat his previous scores.
 
 ## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
