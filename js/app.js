@@ -67,7 +67,7 @@ function ready() {
       list[l].classList.add("show", "open");
     }
     //Removes Class that shows all Cards after 3 seconds.
-  setTimeout( function hideCards() {
+  setTimeout( function() {
     for(let l = list.length-1; l >= 0; l--){
     list[l].classList.remove("show", "open");
       }
@@ -76,11 +76,14 @@ function ready() {
 }
 
 //The Game
+setTimeout(function() {
   document.addEventListener('click', function(event){
     if(event.target.nodeName === 'LI'){
         matchingCards();
       }
     });
+}, 3500);
+
 
     //Increments the move counter for every card flipped
     function incrementCounter() {
