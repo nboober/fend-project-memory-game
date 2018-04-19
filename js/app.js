@@ -100,11 +100,9 @@ setTimeout(function() {
     console.log(heartsContainer);
     function heartDecrement(){
       if(scoreValue === 18){
-      heartsContainer[0].remove();
+      heartsContainer[1].remove();
     } else if(scoreValue === 26){
-        heartsContainer[0].remove();
-      } else if(scoreValue === 34){
-          heartsContainer[0].remove();
+        heartsContainer[1].remove();
       }
     }
 

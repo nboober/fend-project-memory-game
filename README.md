@@ -3,6 +3,7 @@
 ## Table of Contents
 
 * [Summary](#Summary)
+* [How To Play](#How To Play)
 * [Contributing](#contributing)
 
 ## Summary
@@ -19,6 +20,14 @@ The Move Counter increments for every card that is flipped.
 The Heart Counter decrements after a certain number of cards are flipped. The most hearts a player can get is 3 hearts (Less than 18 cards flipped). The least a player can get is zero (Over 33 cards Flipped).
 
 The game is won once the player matches all 16 cards on the board. The player is given the final scores based on the criteria above and an option to try and beat his previous scores.
+
+## How To play
+
+In order to play, this project can be forked at https://github.com/nboober/fend-project-memory-game.git to your own GitHub account.
+Once forked to your GitHub account, pull the files into the local repository on your computer that you want to store the files.
+Take the index.html file from your local repository after they are downloaded and drag it into an empty browser tab. The Game should appear in the browser.
+Once the webpage opens the player will receive a ready prompt. The player must hit ok to start the game.
+Match all the cards in order to win.
 
 ## Contributing
 
