@@ -194,6 +194,8 @@ console.log("The number of cards selected are " + selectedCards.length);
       }
     }
   }
+
+
 //Win function
 function win(){
   if (matchedCards.length === 16){
@@ -203,9 +205,28 @@ function win(){
     console.log(endTimer);
     console.log(finalTime);
     console.log(time);
-    var conf = confirm("You won!! \nYou beat the game in " + scoreValue + " moves and in " + time + " seconds. \nYou beat the game with " + heartsContainer.length + " hearts remaining. \n \nWould you like to play again and try to beat your score?");
-    if (conf === true){
-      location.reload();
-    }
+
+      $('#myModal').modal("show");
+
+
+      let para = document.createElement("div");
+      let modalBody = document.querySelector(".modal-body");
+      let br = document.createElement("br");
+      let br2 = document.createElement("br");
+
+
+      let finalScore = document.createTextNode("You beat the game in " + scoreValue + " moves.");
+      let displayScore = para.appendChild(finalScore);
+      modalBody.appendChild(displayScore);
+      modalBody.appendChild(br);
+
+      let finTime = document.createTextNode("You beat the game in only " + time + " seconds.");
+      let displayTime = para.appendChild(finTime);
+      modalBody.appendChild(displayTime);
+      modalBody.appendChild(br2);
+
+      let finalHearts = document.createTextNode("You beat the game with " + heartsContainer.length + " hearts remaining.");
+      let displayHearts = para.appendChild(finalHearts);
+      modalBody.appendChild(displayHearts);
     }
   }
