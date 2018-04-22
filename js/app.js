@@ -11,6 +11,7 @@ let first;
 let second;
 let firstSelectedClass;
 let secondSelectedClass;
+let won = false;
 
 // Card List
 let list = document.querySelectorAll("li.card");
@@ -48,6 +49,37 @@ function shuffle(array) {
 
     return array;
 }
+//Timer
+function timer(){
+    var sec = 0;
+    var timer = setInterval(function(){
+        document.getElementById('timer').innerHTML='Timer: '+ sec;
+        sec++;
+        if (won === true) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
+
+    //Increments the move counter for every card flipped
+    function incrementCounter() {
+    scoreValue++;
+    document.querySelector(".moves").innerHTML = scoreValue;
+    console.log(scoreValue + " moves have been made.");
+    }
+
+    //Stars
+      //Decrements the star counter at certain intervals of the game
+    let starContainer = document.querySelector(".stars").children;
+    console.log(starContainer);
+    function starDecrement(){
+      if(scoreValue === 18){
+      starContainer[1].remove();
+    } else if(scoreValue === 26){
+        starContainer[1].remove();
+      }
+    }
+
 
 //Event listener for reload button
 let restart = document.querySelector(".restart");
@@ -60,6 +92,7 @@ restart.addEventListener('click', function() {
 function ready() {
   let confirmation = confirm(`You ready to play? \nYou will have 3 seconds to memorize the cards. Good Luck!`);
   if (confirmation === true){
+    timer();
     startTimer = Date.now(); // Starts Timer once confirmation is made to start the game
     console.log(startTimer);
     //Adds Class to show all the cards.
@@ -86,25 +119,6 @@ setTimeout(function() {
     });
   }, 3500);
 }
-
-    //Increments the move counter for every card flipped
-    function incrementCounter() {
-    scoreValue++;
-    document.querySelector(".moves").innerHTML = scoreValue;
-    console.log(scoreValue + " moves have been made.");
-    }
-
-    //Hearts
-      //Decrements the heart counter at certain intervals of the game
-    let heartsContainer = document.querySelector(".stars").children;
-    console.log(heartsContainer);
-    function heartDecrement(){
-      if(scoreValue === 18){
-      heartsContainer[1].remove();
-    } else if(scoreValue === 26){
-        heartsContainer[1].remove();
-      }
-    }
 
 //Flips the chosen card
 function flipCards(){
@@ -154,7 +168,7 @@ console.log("The number of cards selected are " + selectedCards.length);
   if(selectedCardPicture.length < 2){//When there are less then two cards selected, run the functions that allow the flipping of cards
     flipCards();
     incrementCounter();
-    heartDecrement();
+    starDecrement();
     selectedCard();
     if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run the functionality to assess whether the cards match or not
     first = selectedCardPicture[0].classList;
@@ -199,6 +213,7 @@ console.log("The number of cards selected are " + selectedCards.length);
 //Win function
 function win(){
   if (matchedCards.length === 16){
+    won = true;
     endTimer = Date.now();//Stop timer once game is won
     finalTime = endTimer - startTimer;
     time = Math.floor(finalTime/1000);//Time converted into seconds
@@ -225,8 +240,8 @@ function win(){
       modalBody.appendChild(displayTime);
       modalBody.appendChild(br2);
 
-      let finalHearts = document.createTextNode("You beat the game with " + heartsContainer.length + " hearts remaining.");
-      let displayHearts = para.appendChild(finalHearts);
-      modalBody.appendChild(displayHearts);
+      let finalStars = document.createTextNode("You beat the game with " + starContainer.length + " stars remaining.");
+      let displayStars = para.appendChild(finalStars);
+      modalBody.appendChild(displayStars);
     }
   }

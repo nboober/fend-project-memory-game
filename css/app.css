@@ -33,9 +33,22 @@ h1 {
     font-weight: 300;
 }
 
+p{
+display: flex;
+justify-content: center;
+}
+
 /*
  * Styles for the deck of cards
  */
+
+.fa{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
 .deck {
     width: 660px;
