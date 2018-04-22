@@ -53,7 +53,7 @@ function shuffle(array) {
 function timer(){
     var sec = 0;
     var timer = setInterval(function(){
-        document.getElementById('timer').innerHTML='Timer: '+ sec;
+        document.getElementById('timer').innerHTML='Timer: '+ sec + " seconds";
         sec++;
         if (won === true) {
             clearInterval(timer);
@@ -61,24 +61,24 @@ function timer(){
     }, 1000);
 }
 
-    //Increments the move counter for every card flipped
-    function incrementCounter() {
-    scoreValue++;
-    document.querySelector(".moves").innerHTML = scoreValue;
-    console.log(scoreValue + " moves have been made.");
-    }
+//Increments the move counter for every card flipped
+function incrementCounter() {
+scoreValue++;
+document.querySelector(".moves").innerHTML = scoreValue;
+console.log(scoreValue + " moves have been made.");
+}
 
-    //Stars
-      //Decrements the star counter at certain intervals of the game
-    let starContainer = document.querySelector(".stars").children;
-    console.log(starContainer);
-    function starDecrement(){
-      if(scoreValue === 18){
-      starContainer[1].remove();
-    } else if(scoreValue === 26){
-        starContainer[1].remove();
-      }
-    }
+//Stars
+  //Decrements the star counter at certain intervals of the game
+let starContainer = document.querySelector(".stars").children;
+console.log(starContainer);
+function starDecrement(){
+  if(scoreValue === 18){
+  starContainer[1].remove();
+} else if(scoreValue === 26){
+    starContainer[1].remove();
+  }
+}
 
 
 //Event listener for reload button
