@@ -4,6 +4,7 @@
 
 * [Summary](#Summary)
 * [How To Play](#How To Play)
+* [Dependencies](#Dependencies)
 * [Contributing](#contributing)
 
 ## Summary
@@ -28,6 +29,10 @@ Once forked to your GitHub account, clone the files into the local repository on
 Take the index.html file from your local repository after they are downloaded and drag it into an empty browser tab. The Game should appear in the browser.
 Once the webpage opens the player will receive a ready prompt. The player must hit ok to start the game.
 Match all the cards in order to win.
+
+## Dependencies
+
+This Game is reliant on Bootstrap for modals and pictures incorporated into the game. There is no need for the player to have this installed on their computer beforehand. Bootstrap is incorporated directly into the html file with a BootstrapCDN.
 
 ## Contributing
 
