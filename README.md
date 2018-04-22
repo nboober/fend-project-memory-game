@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Summary](#Summary)
-* [How To Play](#How To Play)
+* [How-To-Play](#How-To-Play)
 * [Dependencies](#Dependencies)
 * [Contributing](#contributing)
 
@@ -22,7 +22,7 @@ The Heart Counter decrements after a certain number of cards are flipped. The mo
 
 The game is won once the player matches all 16 cards on the board. The player is given the final scores based on the criteria above and an option to try and beat his previous scores.
 
-## How To Play
+## How-To-Play
 
 In order to play, this project can be forked at https://github.com/nboober/fend-project-memory-game.git to your own GitHub account.
 Once forked to your GitHub account, clone the files into the local repository on your computer that you want to store the files.
