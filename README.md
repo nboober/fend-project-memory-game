@@ -34,6 +34,8 @@ Match all the cards in order to win.
 
 This Game is reliant on Bootstrap for modals and pictures incorporated into the game. There is no need for the player to have this installed on their computer beforehand. Bootstrap is incorporated directly into the html file with a BootstrapCDN.
 
+_Make sure you are using Google Chrome when you play this game. Other browsers are not compatible._
+
 ## Contributing
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
