@@ -61,7 +61,7 @@ function timer(){
     }, 1000);
 }
 
-//Increments the move counter for every card flipped
+//Increments the move counter
 function incrementCounter() {
 scoreValue++;
 document.querySelector(".moves").innerHTML = scoreValue;
@@ -73,9 +73,9 @@ console.log(scoreValue + " moves have been made.");
 let starContainer = document.querySelector(".stars").children;
 console.log(starContainer);
 function starDecrement(){
-  if(scoreValue === 18){
+  if(scoreValue === 9){
   starContainer[1].remove();
-} else if(scoreValue === 26){
+} else if(scoreValue === 17){
     starContainer[1].remove();
   }
 }
@@ -167,10 +167,10 @@ console.log("The number of cards selected are " + selectedCards.length);
   function matchingCards() {
   if(selectedCardPicture.length < 2){//When there are less then two cards selected, run the functions that allow the flipping of cards
     flipCards();
-    incrementCounter();
     starDecrement();
     selectedCard();
     if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run the functionality to assess whether the cards match or not
+    incrementCounter();//increment move counter every time 2 cards are flipped
     first = selectedCardPicture[0].classList;
     console.log("Class of first card " + first[1]);
     firstSelectedClass = first[1];
