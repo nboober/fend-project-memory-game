@@ -167,10 +167,10 @@ console.log("The number of cards selected are " + selectedCards.length);
   function matchingCards() {
   if(selectedCardPicture.length < 2){//When there are less then two cards selected, run the functions that allow the flipping of cards
     flipCards();
-    starDecrement();
     selectedCard();
     if(selectedCardPicture.length === 2){ //If the number of cards selected equals 2, run the functionality to assess whether the cards match or not
     incrementCounter();//increment move counter every time 2 cards are flipped
+    starDecrement();//Decrements the star rating only after the incrementCounter limit is reached 2 cards are selected
     first = selectedCardPicture[0].classList;
     console.log("Class of first card " + first[1]);
     firstSelectedClass = first[1];
